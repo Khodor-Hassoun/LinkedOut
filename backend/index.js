@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const testRoutes = require('./routes/test.routes')
 app.use('/test',testRoutes)
 
+const authRoutes = require('./routes/auth.routes')
+app.use('/auth',authRoutes)
 
 
 app.listen(process.env.APP_PORT,()=>{

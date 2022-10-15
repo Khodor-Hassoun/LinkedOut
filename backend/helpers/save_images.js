@@ -1,7 +1,3 @@
-const fs = require('fs');
-const User = require('../models/user.model')
-const Company = require('../models/company.model');
-
 function saveImage(baseImage) {
     /*path of the folder where your project is saved. (In my case i got it from config file, root path of project).*/
     const uploadPath = `C:/Users/khodor/Code/SeFactory/Webdev-SeF/LinkedOut/backend`;
@@ -30,37 +26,4 @@ function saveImage(baseImage) {
     // return filename;
 }
 
-
-
-
-const signup = async (req, res) =>{
-    const {firstname, lastname, email, password,profile_picture, banner, education} = req.body
-    const user = new User();
-    user.firstname = firstname
-    user.lastname = lastname;
-    user.email = email;
-    user.password = password;
-    user.profile_picture = `${saveImage(profile_picture).localPath}${saveImage(profile_picture).filename}`;
-    user.profile_picture = `${saveImage(banner).localPath}${saveImage(banner).filename}`;
-    user.education = education
-
-    await user.save();
-    res.json(user)
-}
-
-
-const comanySignUp = async (req, res) =>{
-    const user = await User.find({})
-    
-    const {name, email, password, banner, job_posts} = req.body
-    // job_posts[1] = user
-    const company = new Company()
-    company.name = name
-    company.email = email
-    company.password = password
-    company.job_posts = job_posts
-    await company.save()
-    res.json(company)
-}
-
-module.exports = {signup, comanySignUp}
+module.exports = saveImage
