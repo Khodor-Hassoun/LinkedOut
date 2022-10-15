@@ -25,8 +25,8 @@ function saveImage(baseImage) {
         fs.mkdirSync(localPath);
     }
     fs.writeFileSync(localPath+filename, base64Data, 'base64');
-    // return {filename, localPath};
-    return filename;
+    return {filename, localPath};
+    // return filename;
 }
 
 
@@ -39,8 +39,9 @@ const signup = async (req, res) =>{
     user.lastname = lastname;
     user.email = email;
     user.password = password;
-    // user.profile_picture = saveImage(profile_picture);
-    res.send(saveImage(profile_picture))
+    // user.profile_picture = saveImage(profile_picture).localPath;
+    user.profile_picture = `${saveImage(profile_picture).localPath}${saveImage(profile_picture).filename}`;
+    // res.send(saveImage(profile_picture).localPath)
 
     await user.save();
     res.json(user)
