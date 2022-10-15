@@ -33,15 +33,15 @@ function saveImage(baseImage) {
 
 
 const signup = async (req, res) =>{
-    const {firstname, lastname, email, password,profile_picture, banner} = req.body
+    const {firstname, lastname, email, password,profile_picture, banner, education} = req.body
     const user = new User();
     user.firstname = firstname
     user.lastname = lastname;
     user.email = email;
     user.password = password;
-    // user.profile_picture = saveImage(profile_picture).localPath;
     user.profile_picture = `${saveImage(profile_picture).localPath}${saveImage(profile_picture).filename}`;
-    // res.send(saveImage(profile_picture).localPath)
+    user.profile_picture = `${saveImage(banner).localPath}${saveImage(banner).filename}`;
+    user.education = education
 
     await user.save();
     res.json(user)

@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
     },
     password: String,
     profile_picture: String,
-    banner: String
+    banner: String,
+    education: String
 })
 
 const User = mongoose.model('User',userSchema);
