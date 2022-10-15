@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function saveImage(baseImage) {
     /*path of the folder where your project is saved. (In my case i got it from config file, root path of project).*/
     const uploadPath = `C:/Users/khodor/Code/SeFactory/Webdev-SeF/LinkedOut/backend`;
