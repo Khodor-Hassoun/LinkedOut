@@ -1,7 +1,7 @@
 require('dotenv').config()
 require('./config/db.connection')
 
-const axios = require('axios')
+
 const express = require('express');
 const app = express();
 

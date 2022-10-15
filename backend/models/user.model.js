@@ -5,6 +5,8 @@ const userSchema = new mongoose.Schema({
     lastname: String,
     email: {
         type: String,
+        required: true,
+        unique: [true, 'Already taken']
     },
     password: String,
     profile_picture: String,
