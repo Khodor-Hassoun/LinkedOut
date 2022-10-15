@@ -1,5 +1,6 @@
+const fs = require('fs');
 const User = require('../models/user.model')
-const fs = require('fs')
+const Company = require('../models/company.model');
 
 function saveImage(baseImage) {
     /*path of the folder where your project is saved. (In my case i got it from config file, root path of project).*/
@@ -46,4 +47,20 @@ const signup = async (req, res) =>{
     await user.save();
     res.json(user)
 }
-module.exports = signup
+
+
+const comanySignUp = async (req, res) =>{
+    const user = await User.find({})
+    
+    const {name, email, password, banner, job_posts} = req.body
+    job_posts[1] = user
+    const company = new Company()
+    company.name = name
+    company.email = email
+    company.password = password
+    company.job_posts = job_posts
+    await company.save()
+    res.json(company)
+}
+
+module.exports = {signup, comanySignUp}

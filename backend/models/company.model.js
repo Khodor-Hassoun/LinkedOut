@@ -5,7 +5,7 @@ const companySchema = mongoose.Schema({
     email:{
         type:String,
         required: true,
-        unique: true
+        // unique: true
     },
     password:String,
     bio:String,
@@ -19,3 +19,7 @@ const companySchema = mongoose.Schema({
         }]
     }
 })
+
+
+const Company = mongoose.model('Company', companySchema);
+module.exports = Company
