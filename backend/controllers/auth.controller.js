@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.model')
 const Company = require("../models/company.model");
 
-
+// company type 1, user type 0
 const signup =async (req, res)=>{
     // email and password are common in users and comapnies
     // validate email and password
@@ -36,7 +36,7 @@ const signup =async (req, res)=>{
       company.banner = banner;
       await company.save();
       res.status(200).json(company);
-      
+
     } else {
 
       const { firstname, lastname, education } = req.body;
@@ -53,4 +53,25 @@ const signup =async (req, res)=>{
     }
     
 }
-module.exports = signup
+
+const login = async (req, res) =>{
+    const {email, password, type} = req.body
+    let person
+    if(parseInt(type)){
+        person = await Company.findOne({email:email})
+    }else{
+        person = await User.findOne({email:email})
+    }
+    // res.send(person)
+    if(!person) return res.status(404).json({message: "Invalid Credentials"});
+
+    const isMatch = await bcrypt.compare(password, person.password);
+    if(!isMatch) return res.status(404).json({message: "Invalid Credentials"});
+
+    const token = jwt.sign({person}, process.env.JWT_SECRET, {
+        expiresIn: '72h'
+    });
+    res.status(200).json(token)
+}
+
+module.exports = {signup, login}
