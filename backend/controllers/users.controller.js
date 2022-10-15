@@ -6,4 +6,10 @@ const getAllUsers = async (req, res)=>{
     res.json(users)
 }
 
-module.exports = {getAllUsers}
+const getUser = async (req, res) => {
+    const id = req.params.id
+    const user = await User.findById(id)
+    res.json(user)
+}
+
+module.exports = {getAllUsers, getUser}
