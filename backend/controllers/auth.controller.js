@@ -36,6 +36,7 @@ const signup =async (req, res)=>{
       company.banner = banner;
       await company.save();
       res.status(200).json(company);
+      
     } else {
 
       const { firstname, lastname, education } = req.body;
