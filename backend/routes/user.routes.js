@@ -3,10 +3,9 @@ const {getAllUsers, getUser, updateUser, deleteUser} = require('../controllers/u
 const {Router} = require('express');
 const router = Router();
 
-// router.get('/', getAllUsers);
 router.get('/', authMiddleware, getAllUsers);
 router.get('/:id', authMiddleware, getUser);
 router.put('/', authMiddleware ,updateUser);
-router.delete('/', deleteUser);
+router.delete('/', authMiddleware, deleteUser);
 
 module.exports = router;
