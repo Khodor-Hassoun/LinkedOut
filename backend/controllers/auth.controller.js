@@ -73,7 +73,7 @@ const login = async (req, res) =>{
     const token = jwt.sign({person}, process.env.JWT_SECRET, {
         expiresIn: '72h'
     });
-    res.status(200).json(token)
+    res.status(200).json({token, person})
 }
 
 module.exports = {signup, login}
