@@ -11,13 +11,15 @@ const companySchema = new mongoose.Schema({
     bio:String,
     profile_picture: String,
     banner: String,
-    job_posts: {
-        type:Array,
-        applicants: [{
+    job_posts:[{
+        description: {
+            type:String
+        },
+        applicants:[{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }]
-    }
+    }]
 })
 
 

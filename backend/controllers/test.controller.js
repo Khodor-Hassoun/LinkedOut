@@ -50,15 +50,16 @@ const signup = async (req, res) =>{
 
 
 const comanySignUp = async (req, res) =>{
-    const user = await User.find({})
+    const user = await User.find({}).select('id')
     
-    const {name, email, password, banner, job_posts} = req.body
-    // job_posts[1] = user
+    const {name, email, password, banner, job_posts,description} = req.body
+    res.send(description)
     const company = new Company()
     company.name = name
     company.email = email
     company.password = password
-    company.job_posts = job_posts
+    company.job_posts.push({description}) 
+
     await company.save()
     res.json(company)
 }

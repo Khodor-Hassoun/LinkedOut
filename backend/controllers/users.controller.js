@@ -1,6 +1,7 @@
 const saveImage = require('../helpers/save_images')
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model')
+const Company = require('../models/company.model')
 
 
 const getAllUsers = async (req, res)=>{
@@ -48,6 +49,10 @@ const updateUser = async (req, res)=>{
 const deleteUser = async (req, res) =>{
     const {id} = req.body
     await User.findByIdAndDelete(id).then(user => res.json(user))
+}
+
+const applyJob = async (req, res) =>{
+    
 }
 
 module.exports = {getAllUsers, getUser, updateUser, deleteUser}
