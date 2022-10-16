@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import Button from './components/Button'
+import Input from './components/Input';
+import SignIn from './components/SignIn';
+// import {baseURL, authRoutes, usersRoutes, companiesRoutes} from './apis/statics'
+
 
 function App() {
   function clickedMe(){
@@ -11,10 +15,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <Button text= {'Sign in'} onClick = {clickedMe}/>
+        {/* <Input label = {'name'} type={'text'} name={'hello'} /> */}
+        <SignIn />
+        {/* <Button text= {'Sign in'} onClick = {clickedMe}/> */}
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+
         <a
           className="App-link test-3xl underline font-extrabold"
           href="https://reactjs.org"
