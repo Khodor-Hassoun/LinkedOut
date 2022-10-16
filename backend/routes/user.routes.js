@@ -1,5 +1,5 @@
 const authMiddleware = require('../middlewares/auth.middleware')
-const {getAllUsers, getUser, updateUser, deleteUser} = require('../controllers/users.controller')
+const {getAllUsers, getUser, updateUser, deleteUser, applyJob} = require('../controllers/users.controller')
 const {Router} = require('express');
 const router = Router();
 
@@ -8,4 +8,5 @@ router.get('/:id', authMiddleware, getUser);
 router.put('/', authMiddleware ,updateUser);
 router.delete('/', authMiddleware, deleteUser);
 
+router.post('/apply', applyJob)
 module.exports = router;
