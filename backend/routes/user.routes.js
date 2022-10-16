@@ -8,5 +8,5 @@ router.get('/:id', authMiddleware, getUser);
 router.put('/', authMiddleware ,updateUser);
 router.delete('/', authMiddleware, deleteUser);
 
-router.post('/apply', applyJob)
+// router.post('/apply', applyJob)
 module.exports = router;
