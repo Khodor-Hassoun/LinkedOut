@@ -16,6 +16,11 @@ app.use('/test',testRoutes)
 const authRoutes = require('./routes/auth.routes')
 app.use('/auth',authRoutes)
 
+const userRoutes = require('./routes/user.routes')
+app.use('/users', userRoutes)
+
+const companyRoutes = require('./routes/company.routes')
+app.use('/companies', companyRoutes)
 
 app.listen(process.env.APP_PORT,()=>{
     console.log(`on port ${process.env.APP_PORT}`)
