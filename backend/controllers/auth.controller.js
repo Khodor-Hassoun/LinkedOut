@@ -57,11 +57,13 @@ const signup =async (req, res)=>{
 const login = async (req, res) =>{
     const {email, password, type} = req.body
     let person
-    if(parseInt(type)){
-        person = await Company.findOne({email:email})
-    }else{
-        person = await User.findOne({email:email})
-    }
+    // if(parseInt(type)){
+    //     person = await Company.findOne({email:email})
+    // }else{
+    //     person = await User.findOne({email:email})
+    // }
+    person = await Company.findOne({email:email})
+    if(!person) person = await User.findOne({email:email})
     // res.send(person)
     if(!person) return res.status(404).json({message: "Invalid Credentials"});
 
