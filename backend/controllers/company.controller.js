@@ -55,4 +55,15 @@ const addJob = async (req, res) =>{
 
 }
 
-module.exports = {getAllCompanies, getCompany, updateCompany, deleteCompany, addJob}
+const getAllJobs = async (req, res) =>{
+    const jobs = await Company.find({}).select("job_posts")
+    res.json(jobs)
+}
+const getCompanyJobs = async (req, res) =>{
+    const id = req.params.id
+    const jobs = await Company.findById(id).select("job_posts")
+    // res.json(jobs.job_posts[0].applicants)
+    res.json(jobs.job_posts)
+}
+
+module.exports = {getAllCompanies, getCompany, updateCompany, deleteCompany, addJob, getAllJobs, getCompanyJobs}
