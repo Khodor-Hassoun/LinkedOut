@@ -7,4 +7,11 @@ const getAllCompanies = async (req, res)=>{
     res.json(comapnies)
 }
 
-module.exports = {getAllCompanies}
+const getCompany = async (req, res) =>{
+    const id = req.params.id
+    const company = await Company.findById(id)
+    res.json(company)
+
+}
+
+module.exports = {getAllCompanies, getCompany}
