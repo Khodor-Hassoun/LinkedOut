@@ -45,4 +45,9 @@ const updateUser = async (req, res)=>{
 
 }
 
-module.exports = {getAllUsers, getUser, updateUser}
+const deleteUser = async (req, res) =>{
+    const {id} = req.body
+    await User.findByIdAndDelete(id).then(user => res.json(user))
+}
+
+module.exports = {getAllUsers, getUser, updateUser, deleteUser}
