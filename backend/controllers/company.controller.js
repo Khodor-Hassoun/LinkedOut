@@ -39,4 +39,20 @@ const updateCompany = async (req, res) =>{
 
 }
 
-module.exports = {getAllCompanies, getCompany}
+const deleteCompany = async (req, res) =>{
+    const {id} = req.body
+    await Company.findByIdAndDelete(id).then(company => res.json(company))
+}
+
+const addJob = async (req, res) =>{
+    const id = req.body.id
+    const {description} = req.body
+    const company = await Company.findById(id)
+    company.job_posts.push({description}) 
+    
+    await company.save()
+    res.json(company)
+
+}
+
+module.exports = {getAllCompanies, getCompany, updateCompany, deleteCompany, addJob}
